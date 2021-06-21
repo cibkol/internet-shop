@@ -4,8 +4,7 @@ function Card (props) {
     const onClickButton = () => {
         alert(props.title);
     };
-
-    console.log(props.title)
+    
     return (
         <div className={styles.card}>
 
