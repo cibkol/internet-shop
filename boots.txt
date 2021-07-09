@@ -1,0 +1,63 @@
+[
+  {
+    "title": "Кроссовки A",
+    "imageUrl": "/img/card/boots1.png",
+    "price": 8500213
+  },
+  {
+    "title": "Кроссовки B",
+    "imageUrl": "/img/card/boots2.png",
+    "price": 8500243
+  },
+  {
+    "title": "Кроссовки C",
+    "imageUrl": "/img/card/boots3.png",
+    "price": 850024113
+  },
+  {
+    "title": "Кроссовки D",
+    "imageUrl": "/img/card/boots4.png",
+    "price": 85002423
+  },
+  {
+    "title": "Кроссовки E",
+    "imageUrl": "/img/card/boots5.png",
+    "price": 8500125
+  },
+  {
+    "title": "Кроссовки G",
+    "imageUrl": "/img/card/boots6.png",
+    "price": 8500
+  },
+  {
+    "title": "Кроссовки K",
+    "imageUrl": "/img/card/boots7.png",
+    "price": 8500
+  },
+  {
+    "title": "Кроссовки O",
+    "imageUrl": "/img/card/boots8.png",
+    "price": 8500
+  },
+  {
+    "title": "Кроссовки P",
+    "imageUrl": "/img/card/boots9.png",
+    "price": 8500
+  },
+  {
+    "title": "Кроссовки R",
+    "imageUrl": "/img/card/boots10.png",
+    "price": 8500
+  },
+  {
+    "title": "Кроссовки S",
+    "imageUrl": "/img/card/boots11.png",
+    "price": 8500
+  },
+  {
+    "id": "2",
+    "title": "Кроссовки T",
+    "imageUrl": "/img/card/boots12.png",
+    "price": 8500
+  }
+]

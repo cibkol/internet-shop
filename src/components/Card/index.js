@@ -1,32 +1,67 @@
 import styles from './Card.module.scss'
+import React from 'react';
+import ContentLoader from "react-content-loader";
+import AppContext from '../../context';
 
-function Card (props) {
-    const onClickButton = () => {
-        alert(props.title);
-    };
+function Card ({
+    title, 
+    imageUrl, 
+    price, 
+    onFavorite, 
+    onPlus, 
+    id, 
+    loading = false}) {
+    const {isItemAdded, isItemFavorit} = React.useContext(AppContext);
+    const obj = { id, parentId: id, title, imageUrl, price };
+
+    const onClickPlus = () => {
+        onPlus(obj);
+    }
     
+    const onClickFavorite = () => {
+        onFavorite(obj);
+    }
+
     return (
-        <div className={styles.card}>
+        <div className={styles.card + " mb-20"}>
 
-            <div className={styles.favorite}>
-                <img src="/img/icons/heart-unliked.svg" alt="heart-unliked" />
-            </div>
+            {
+                loading ?
 
-            <img src={props.imageUrl} width="133" height="112" />
+                (<ContentLoader 
+                    speed={2}
+                    width={150}
+                    height={210}
+                    viewBox="0 0 150 210"
+                    backgroundColor="#f3f3f3"
+                    foregroundColor="#ecebeb">
 
-            <h5>{props.title}</h5>
+                    <rect x="0" y="0" rx="10" ry="10" width="150" height="90" /> 
+                    <rect x="0" y="112" rx="5" ry="5" width="150" height="15" /> 
+                    <rect x="0" y="134" rx="5" ry="5" width="100" height="15" /> 
+                    <rect x="0" y="184" rx="5" ry="5" width="80" height="25" /> 
+                    <rect x="118" y="177" rx="10" ry="10" width="32" height="32" />
+                </ContentLoader>)
+                : 
+                (<> 
+                    {onFavorite && <div className={styles.favorite} onClick={onClickFavorite} >
+                        <img src={isItemFavorit(imageUrl) ? "/img/icons/heart-liked.svg" : "/img/icons/heart-unliked.svg"} alt="heart-unliked"/>
+                    </div>}
 
-            <div className="d-flex justify-between align-center"> 
-                <div className="d-flex flex-column">
-                <span>Цена:</span>
-                <b>{props.price} руб.</b>
-                </div>
-                <button className="button" onClick={onClickButton}>
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10.6653 5.13122H7.20214V1.66821C7.20214 0.332846 5.13114 0.332846 5.13114 1.66821V5.13122H1.668C0.332935 5.13122 0.332935 7.20215 1.668 7.20215H5.13114V10.6652C5.13114 12.0005 7.20214 12.0005 7.20214 10.6652V7.20215H10.6653C12.0005 7.20215 12.0005 5.13122 10.6653 5.13122Z" fill="#D3D3D3"/>
-                    </svg>
-                </button>
-            </div>
+                        <img src={imageUrl} width="133" height="112" alt="bootsImage"/>
+
+                        <h5>{title}</h5>
+
+                        <div className="d-flex justify-between align-center"> 
+                            <div className="d-flex flex-column">
+                            <span>Цена:</span>
+                            <b>{price} руб.</b>
+                            </div>
+                            {onPlus && <img className={styles.plus} onClick={onClickPlus} src={isItemAdded(id) ? "/img/icons/btn-checked.svg": "/img/icons/btn-plus.svg"} alt="Plus"/>}
+                    </div>
+                </>)
+            }
+            
 
         </div>        
     )
